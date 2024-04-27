@@ -6,6 +6,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import lombok.Builder;
 import lombok.Getter;
 
 @ApiModel(value = "회원 가입 API - 요청")
@@ -42,6 +43,17 @@ public class MemberCreateRequest {
     @Email
     @Size(max = 320)
     private String email;
+
+    @Builder
+    private MemberCreateRequest(String loginId, String password, String nickname, String name, String phoneNumber,
+                               String email) {
+        this.loginId = loginId;
+        this.password = password;
+        this.nickname = nickname;
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+    }
 
     public Member toEntity(String encryptedPassword) {
         return Member.builder()
