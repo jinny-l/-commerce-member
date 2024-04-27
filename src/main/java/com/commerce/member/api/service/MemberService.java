@@ -1,6 +1,8 @@
 package com.commerce.member.api.service;
 
+import com.commerce.member.api.domain.Member;
 import com.commerce.member.api.dto.MemberCreateRequest;
+import com.commerce.member.api.dto.MemberProfileUpdate;
 import com.commerce.member.api.exception.MemberException;
 import com.commerce.member.api.repository.MemberRepository;
 import com.commerce.member.global.exception.ApiException;
@@ -26,6 +28,26 @@ public class MemberService {
         String encryptedPassword = passwordEncoder.encrypt(request.getPassword());
 
         memberRepository.save(request.toEntity(encryptedPassword));
+    }
+
+    @Transactional
+    public MemberProfileUpdate.Response updateProfile(String loginId, MemberProfileUpdate.Request request) {
+        validateEmail(request.getEmail());
+        validateNickName(request.getNickname());
+
+        Member member = memberRepository.findByLoginId(loginId)
+                .orElseThrow(() -> new ApiException(MemberException.LOGIN_ID_NOT_FOUND));
+
+        String encryptedPassword = passwordEncoder.encrypt(request.getPassword());
+
+        member.update(
+                encryptedPassword,
+                request.getNickname(),
+                request.getPhoneNumber(),
+                request.getEmail()
+        );
+
+        return MemberProfileUpdate.Response.from(member);
     }
 
     private void validateLoginId(String loginId) {

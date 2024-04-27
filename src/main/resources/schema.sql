@@ -6,5 +6,6 @@ CREATE TABLE IF NOT EXISTS member (
     name              VARCHAR(20)     NOT NULL,
     phone_number      VARCHAR(20)     NOT NULL,
     email             VARCHAR(320)    NOT NULL,
-    created_time      TIMESTAMP       NOT NULL
+    created_time      TIMESTAMP       NOT NULL,
+    INDEX idx_login_id (login_id)
 );

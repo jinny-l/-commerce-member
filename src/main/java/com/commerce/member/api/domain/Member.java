@@ -10,10 +10,12 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.DynamicUpdate;
 
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@DynamicUpdate
 public class Member extends TimeAuditingBaseEntity {
 
     @Id
@@ -44,6 +46,13 @@ public class Member extends TimeAuditingBaseEntity {
         this.password = password;
         this.nickname = nickname;
         this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+    }
+
+    public void update(String password, String nickname, String phoneNumber, String email) {
+        this.password = password;
+        this.nickname = nickname;
         this.phoneNumber = phoneNumber;
         this.email = email;
     }
