@@ -2,4 +2,4 @@ spring:
   profiles:
     active: local
     group:
-      local: jpa, db
+      local: jpa, db, swagger
