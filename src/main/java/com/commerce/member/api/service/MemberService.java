@@ -1,13 +1,18 @@
 package com.commerce.member.api.service;
 
 import com.commerce.member.api.domain.Member;
+import com.commerce.member.api.domain.SortType;
 import com.commerce.member.api.dto.MemberCreateRequest;
 import com.commerce.member.api.dto.MemberProfileUpdate;
+import com.commerce.member.api.dto.MembersReadResponse;
 import com.commerce.member.api.exception.MemberException;
 import com.commerce.member.api.repository.MemberRepository;
 import com.commerce.member.global.exception.ApiException;
 import com.commerce.member.global.security.PasswordEncoder;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,6 +33,18 @@ public class MemberService {
         String encryptedPassword = passwordEncoder.encrypt(request.getPassword());
 
         memberRepository.save(request.toEntity(encryptedPassword));
+    }
+
+    public MembersReadResponse findAllBy(int page, int pageSize, String sort) {
+        SortType sortType = SortType.from(sort);
+
+        PageRequest pageRequest = PageRequest.of(page, pageSize, Sort.by(sortType.getText()));
+        Page<Member> members = memberRepository.findAllBy(pageRequest);
+
+        return MembersReadResponse.from(
+                members.getTotalPages(),
+                members.getContent()
+        );
     }
 
     @Transactional
