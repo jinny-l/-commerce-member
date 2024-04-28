@@ -3,6 +3,7 @@ package com.commerce.member.api.dto;
 import com.commerce.member.api.domain.Member;
 import io.swagger.annotations.ApiModel;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.Instant;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.Builder;
@@ -33,7 +34,7 @@ public class MembersReadResponse {
     }
 
     @Getter
-    private static class MemberReadResponse {
+    public static class MemberReadResponse {
 
         @Schema(description = "회원 식별자", example = "1")
         private final Long id;
@@ -44,11 +45,15 @@ public class MembersReadResponse {
         @Schema(description = "이름", example = "김커머스")
         private final String name;
 
+        @Schema(description = "가입일", example = "2024-04-28T09:40:44Z")
+        private final Instant createdTime;
+
         @Builder
-        private MemberReadResponse(Long id, String loginId, String name) {
+        private MemberReadResponse(Long id, String loginId, String name, Instant createdTime) {
             this.id = id;
             this.loginId = loginId;
             this.name = name;
+            this.createdTime = createdTime;
         }
 
         private static MemberReadResponse from(Member member) {
@@ -56,6 +61,7 @@ public class MembersReadResponse {
                     .id(member.getId())
                     .loginId(member.getLoginId())
                     .name(member.getName())
+                    .createdTime(member.getCreatedTime())
                     .build();
         }
     }
