@@ -4,13 +4,21 @@ import com.commerce.member.api.dto.MemberCreateRequest;
 
 public enum MemberCreateFixture {
 
-    정상_정보_회원(
+    정상_정보_회원1(
             "commerce",
             "password",
             "커머스",
             "김커머스",
             "01012345678",
             "commerce@commerce.com"
+    ),
+    정상_정보_회원2(
+            "commerce2",
+            "password2",
+            "커머스2",
+            "김커머스2",
+            "01012345670",
+            "commerce2@commerce.com"
     ),
     중복_로그인Id_회원(
             "commerce",
@@ -37,12 +45,12 @@ public enum MemberCreateFixture {
             "commerce1@commerce.com"
     );
 
-    private final String loginId;
+    public final String loginId;
     private final String password;
-    private final String nickname;
+    public final String nickname;
     private final String name;
     private final String phoneNumber;
-    private final String email;
+    public final String email;
 
     MemberCreateFixture(String loginId, String password, String nickname, String name, String phoneNumber,
                         String email) {

@@ -16,7 +16,7 @@ class MemberCreateTest extends RestAssuredTest {
     @Test
     void 정상정보로_회원_가입하면_성공한다() {
         // given
-        MemberCreateRequest request = MemberCreateFixture.정상_정보_회원.toDto();
+        MemberCreateRequest request = MemberCreateFixture.정상_정보_회원1.toDto();
 
         // when
         ExtractableResponse<Response> response = MemberStep.회원_생성_요청(request);
@@ -28,7 +28,7 @@ class MemberCreateTest extends RestAssuredTest {
     @Test
     void 로그인ID가_중복일_경우_회원가입에_실패한다() {
         // given
-        MemberStep.회원_생성_요청(MemberCreateFixture.정상_정보_회원.toDto());
+        MemberStep.회원_생성_요청(MemberCreateFixture.정상_정보_회원1.toDto());
         MemberCreateRequest duplicatedLoginIdRequest = MemberCreateFixture.중복_로그인Id_회원.toDto();
 
         // when
@@ -41,7 +41,7 @@ class MemberCreateTest extends RestAssuredTest {
     @Test
     void 이메일이_중복일_경우_회원가입에_실패한다() {
         // given
-        MemberStep.회원_생성_요청(MemberCreateFixture.정상_정보_회원.toDto());
+        MemberStep.회원_생성_요청(MemberCreateFixture.정상_정보_회원1.toDto());
         MemberCreateRequest duplicatedEmailRequest = MemberCreateFixture.중복_이메일_회원.toDto();
 
         // when
@@ -54,7 +54,7 @@ class MemberCreateTest extends RestAssuredTest {
     @Test
     void 닉네임_중복일_경우_회원가입에_실패한다() {
         // given
-        MemberStep.회원_생성_요청(MemberCreateFixture.정상_정보_회원.toDto());
+        MemberStep.회원_생성_요청(MemberCreateFixture.정상_정보_회원1.toDto());
         MemberCreateRequest duplicatedNicknameRequest = MemberCreateFixture.중복_닉네임_회원.toDto();
 
         // when

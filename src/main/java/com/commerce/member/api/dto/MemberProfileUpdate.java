@@ -36,6 +36,14 @@ public class MemberProfileUpdate {
         @Email
         @Size(max = 320)
         private String email;
+
+        @Builder
+        private Request(String password, String nickname, String phoneNumber, String email) {
+            this.password = password;
+            this.nickname = nickname;
+            this.phoneNumber = phoneNumber;
+            this.email = email;
+        }
     }
 
     @ApiModel(value = "회원 정보 수정 API - 응답")
