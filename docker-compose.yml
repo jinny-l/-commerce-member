@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  mysql:
+    image: mysql:8.0
+    restart: always
+    container_name: commerce_member_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: commerce
+    ports:
+      - "3307:3306"
