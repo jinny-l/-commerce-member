@@ -1,0 +1,18 @@
+INSERT INTO member (login_id, password, nickname, name, phone_number, email, created_time) VALUES
+('user1', 'password1', 'user1_nickname', 'User 1', '123456789', 'user1@example.com', NOW()),
+('user2', 'password2', 'user2_nickname', 'User 2', '987654321', 'user2@example.com', NOW() - INTERVAL 1 MINUTE),
+('user3', 'password3', 'user3_nickname', 'User 3', '456123789', 'user3@example.com', NOW() - INTERVAL 2 MINUTE),
+('user4', 'password4', 'user4_nickname', 'User 4', '789456123', 'user4@example.com', NOW() - INTERVAL 3 MINUTE),
+('user5', 'password5', 'user5_nickname', 'User 5', '321654987', 'user5@example.com', NOW() - INTERVAL 4 MINUTE),
+('user6', 'password6', 'user6_nickname', 'User 6', '654987321', 'user6@example.com', NOW() - INTERVAL 5 MINUTE),
+('user7', 'password7', 'user7_nickname', 'User 7', '456789123', 'user7@example.com', NOW() - INTERVAL 6 MINUTE),
+('user8', 'password8', 'user8_nickname', 'User 8', '987123456', 'user8@example.com', NOW() - INTERVAL 7 MINUTE),
+('user9', 'password9', 'user9_nickname', 'User 9', '123789456', 'user9@example.com', NOW() - INTERVAL 8 MINUTE),
+('user10', 'password10', 'user10_nickname', 'User 10', '789123456', 'user10@example.com', NOW() - INTERVAL 9 MINUTE),
+('user11', 'password11', 'user11_nickname', 'User 11', '456789321', 'user11@example.com', NOW() - INTERVAL 10 MINUTE),
+('user12', 'password12', 'user12_nickname', 'User 12', '321987654', 'user12@example.com', NOW() - INTERVAL 11 MINUTE),
+('user13', 'password13', 'user13_nickname', 'User 13', '789321654', 'user13@example.com', NOW() - INTERVAL 12 MINUTE),
+('user14', 'password14', 'user14_nickname', 'User 14', '654123789', 'user14@example.com', NOW() - INTERVAL 13 MINUTE),
+('user15', 'password15', 'user15_nickname', 'User 15', '123987654', 'user15@example.com', NOW() - INTERVAL 14 MINUTE),
+('user16', 'password16', 'user16_nickname', 'User 16', '321789456', 'user16@example.com', NOW() - INTERVAL 15 MINUTE),
+('user17', 'password17', 'user17_nickname', 'User 17', '987456321', 'user17@example.com', NOW() - INTERVAL 16 MINUTE);

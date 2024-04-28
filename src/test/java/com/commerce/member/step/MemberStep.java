@@ -21,4 +21,13 @@ public class MemberStep extends RestAssuredTest {
                 .when().patch("/api/user/{loginId}", loginId)
                 .then().log().all().extract();
     }
+
+    public static ExtractableResponse<Response> 회원_목록_조회_요청(Integer page, Integer pageSize, String sort) {
+        return givenJsonRequest()
+                .param("page", page)
+                .param("pageSize", pageSize)
+                .param("sort", sort)
+                .when().get("/api/user/list")
+                .then().log().all().extract();
+    }
 }
